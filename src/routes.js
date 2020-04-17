@@ -3,8 +3,12 @@ const express = require('express');
 const UsuarioController = require('./controllers/UsuarioController');
 const ClienteController = require('./controllers/ClienteController');
 const SessaoController = require('./controllers/SessaoController');
+const PagarController = require('./controllers/PagarController');
 
 const routes = express.Router();
+
+routes.get('/pagar', PagarController.index);
+routes.post('/pagar', PagarController.create);
 
 routes.post('/sessao', SessaoController.create);
 
