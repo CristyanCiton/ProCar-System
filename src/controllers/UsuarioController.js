@@ -10,7 +10,7 @@ module.exports = {
     },
 
     async create(request, response) {
-        const { login, crip, email, whatsapp, cidade, endereco, n, uf } = request.body;
+        const { login, crip, cpf_cnpj, email, telefone, cidade, bairro, cep, rua, n, uf } = request.body;
 
         const cipher = crypto.createCipher(alg, crip)
         const senha = cipher.update(crip, 'utf8', 'hex')
@@ -18,10 +18,13 @@ module.exports = {
         await connection('usuario').insert({
             login,
             senha,
+            cpf_cnpj,
             email,
-            whatsapp,
+            telefone,
             cidade,
-            endereco,
+            bairro,
+            cep,
+            rua,
             n,
             uf
         });

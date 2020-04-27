@@ -12,15 +12,18 @@ module.exports = {
     },
 
     async create(request, response) {
-        const { nome, email, whatsapp, cidade, endereco, n, uf } = request.body;
+        const { nome, cpf_cnpj, email, telefone, cidade, bairro, cep, rua, n, uf } = request.body;
         const idUsuario = request.headers.autorizacao;
 
         const [idCliente] = await connection('cliente').insert({
             nome,
+            cpf_cnpj,
             email,
-            whatsapp,
+            telefone,
             cidade,
-            endereco,
+            bairro,
+            cep,
+            rua,
             n,
             uf,
             idUsuario

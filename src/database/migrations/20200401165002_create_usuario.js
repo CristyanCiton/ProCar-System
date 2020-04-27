@@ -4,10 +4,13 @@ exports.up = function(knex) {
     table.increments('idUsuario');
     table.string('login').notNullable();
     table.string('senha').notNullable();
+    table.varchar('cpf_cnpj').notNullable();
     table.string('email').notNullable();
-    table.string('whatsapp').notNullable();
+    table.string('telefone').notNullable();
     table.string('cidade').notNullable();
-    table.string('endereco').notNullable();
+    table.string('bairro').notNullable();
+    table.varchar('cep').notNullable();
+    table.string('rua').notNullable();
     table.varchar('n').notNullable();
     table.varchar('uf', 2).notNullable();
 
