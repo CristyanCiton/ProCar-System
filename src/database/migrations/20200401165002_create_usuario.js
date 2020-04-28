@@ -3,7 +3,7 @@ exports.up = function(knex) {
   return knex.schema.createTable('usuario', function (table) {
     table.increments('idUsuario');
     table.string('login').notNullable();
-    table.string('senha').notNullable();
+    table.varchar('senha').notNullable();
     table.varchar('cpf_cnpj').notNullable();
     table.string('email').notNullable();
     table.string('telefone').notNullable();

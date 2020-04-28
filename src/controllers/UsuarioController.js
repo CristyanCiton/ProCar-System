@@ -1,6 +1,7 @@
 const connection = require('../database/connection');
 const crypto = require('crypto');
 const alg = 'aes-256-ctr';
+const pwd = 'administracaoprocar';
 
 module.exports = {
     async index (request, response) {
@@ -12,7 +13,7 @@ module.exports = {
     async create(request, response) {
         const { login, crip, cpf_cnpj, email, telefone, cidade, bairro, cep, rua, n, uf } = request.body;
 
-        const cipher = crypto.createCipher(alg, crip)
+        const cipher = crypto.createCipher(alg, pwd)
         const senha = cipher.update(crip, 'utf8', 'hex')
 
         await connection('usuario').insert({

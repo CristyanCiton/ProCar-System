@@ -1,6 +1,7 @@
 const connection = require('../database/connection');
 const crypto = require('crypto');
 const alg = 'aes-256-ctr';
+const pwd = 'administracaoprocar';
 
 module.exports = {
     async create(request, response) {
@@ -16,11 +17,13 @@ module.exports = {
         .select('senha')
         .first();
 
+        console.log(valor);
+
         if(!usuario) {
             return response.status(400).json({ error: 'Não há um usuário com esse login!'});
         }else{
-            const decipher = crypto.createDecipher(alg, senhaDigitada)
-            const plain = decipher.update('2c1b3b6f', 'hex', 'utf8')
+            const decipher = crypto.createDecipher(alg, pwd)
+            const plain = decipher.update(valor, 'hex', 'utf8')
                 if(senhaDigitada == plain) {
                     return response.json(usuario);
                 }else{
