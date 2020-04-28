@@ -13,7 +13,7 @@ exports.up = function(knex) {
       table.varchar('n').notNullable();
       table.varchar('uf', 2).notNullable();
 
-      table.string('idUsuario').notNullable();
+      table.varchar('idUsuario').notNullable();
 
       table.foreign('idUsuario').references('idUsuario').inTable('usuario');
     });
