@@ -1,7 +1,7 @@
 const connection = require('../database/connection');
 const crypto = require('crypto');
 const alg = 'aes-256-ctr';
-const pwd = 'administracaoprocar';
+const pwd = 'administracaoprocarsystem2020';
 
 module.exports = {
     async index (request, response) {
