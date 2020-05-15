@@ -22,7 +22,7 @@ module.exports = {
         }else{
             const cipher = crypto.createCipher(alg, pwd)
             const senha = cipher.update(senhaDigitada, 'utf8', 'hex')
-                if(senha == valor) {
+                if(senha == valor.senha) {
                     return response.json(usuario);
                 }else{
                     return response.status(400).json({ error: 'Senha digitada é invalida!'});
