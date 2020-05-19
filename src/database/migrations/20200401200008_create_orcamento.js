@@ -8,10 +8,6 @@ exports.up = function(knex) {
       table.string('idUsuario').notNullable();
       table.string('idCliente').notNullable();
       table.string('idProduto').notNullable();
-
-      table.foreign('idUsuario').references('idUsuario').inTable('usuario');
-      table.foreign('idCliente').references('idCliente').inTable('cliente');
-      table.foreign('idProduto').references('idProduto').inTable('produto');
     });
   };
   

@@ -18,14 +18,14 @@ module.exports = {
         .first();
 
         if(!usuario) {
-            return response.status(400).json({ error: 'Não há um usuário com esse login!'});
+            return response.status(400).json({ error: 'Usuario ou senha incorreto!'});
         }else{
             const cipher = crypto.createCipher(alg, pwd)
             const senha = cipher.update(senhaDigitada, 'utf8', 'hex')
                 if(senha == valor.senha) {
-                    return response.json(usuario);
+                    return response.json(usuario.idUsuario);
                 }else{
-                    return response.status(400).json({ error: 'Senha digitada é invalida!'});
+                    return response.status(400).json({ error: 'Usuario ou senha incorreto!'});
           }
         }
     }
