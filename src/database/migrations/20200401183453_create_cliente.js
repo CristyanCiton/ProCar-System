@@ -12,8 +12,10 @@ exports.up = function(knex) {
       table.string('rua').notNullable();
       table.varchar('n').notNullable();
       table.varchar('uf', 2).notNullable();
+
       table.varchar('idUsuario').notNullable();
       
+      table.foreign('idUsuario').references('idUsuario').inTable('usuario');
     });
   };
   

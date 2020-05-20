@@ -10,6 +10,9 @@ exports.up = function(knex) {
       table.float('juros');
       table.string('idUsuario').notNullable();
       table.string('idCliente').notNullable();
+
+      table.foreign('idUsuario').references('idUsuario').inTable('usuario');
+      table.foreign('idCliente').references('idCliente').inTable('cliente');
       
     });
   };
