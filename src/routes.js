@@ -9,6 +9,7 @@ const routes = express.Router();
 
 routes.get('/pagar', PagarController.index);
 routes.post('/pagar', PagarController.create);
+routes.delete('/pagar/:idFinanceiro', PagarController.delete);
 
 routes.post('/sessao', SessaoController.create);
 
