@@ -15,7 +15,7 @@ module.exports = {
         const { tipo_titulo, data_lancamento, data_emissao, data_vencimento, valor, idCliente } = request.body;
         const idUsuario = request.headers.autorizacao;
 
-        console.log(request.body);
+        const idPadrao = 0; 
 
         const [idFinanceiro] = await connection('financeiro').insert({
             tipo_titulo,
@@ -24,13 +24,14 @@ module.exports = {
             data_vencimento,
             valor,
             idCliente,
-            idUsuario
+            idUsuario,
+            idPadrao
             });
 
         return response.json({ idFinanceiro });
     },
 
-    async delete(request, response) {
+    async update(request, response) {
         const { idFinanceiro } = request.params;
         const idUsuario = request.headers.autorizacao;
     
@@ -38,13 +39,14 @@ module.exports = {
         .where('idFinanceiro', idFinanceiro)
         .select('idUsuario')
         .first();
-    
+
         if (financeiro.idUsuario != idUsuario) {
             return response.status(401).json({error: 'Operação não permitida.'});
         }
-    
-        await connection('financeiro').where('idFinanceiro', idFinanceiro).delete();
-    
+        await connection('financeiro')
+        .where('idFinanceiro', idFinanceiro)
+        .update('idPadrao', 1)
+
         return response.status(204).send();
     }
 }

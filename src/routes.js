@@ -9,7 +9,7 @@ const routes = express.Router();
 
 routes.get('/pagar', PagarController.index);
 routes.post('/pagar', PagarController.create);
-routes.delete('/pagar/:idFinanceiro', PagarController.delete);
+routes.post('/pagar/:idFinanceiro', PagarController.update);
 
 routes.post('/sessao', SessaoController.create);
 
@@ -19,7 +19,7 @@ routes.delete('/usuario/:idUsuario', UsuarioController.delete);
 
 routes.get('/cliente', ClienteController.index);
 routes.post('/cliente', ClienteController.create);
-//routes.put('/cliente', ClienteController.update);
+//routes.post('/cliente/:idCliente', ClienteController.update);
 routes.delete('/cliente/:idCliente', ClienteController.delete);
 
 module.exports = routes;

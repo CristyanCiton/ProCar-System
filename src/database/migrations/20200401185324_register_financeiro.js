@@ -8,6 +8,7 @@ exports.up = function(knex) {
       table.date('data_vencimento').notNullable();
       table.float('valor').notNullable();
       table.float('juros');
+      table.integer('idPadrao').notNullable();
       table.string('idUsuario').notNullable();
       table.string('idCliente').notNullable();
 
