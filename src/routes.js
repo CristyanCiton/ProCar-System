@@ -3,13 +3,17 @@ const express = require('express');
 const UsuarioController = require('./controllers/UsuarioController');
 const ClienteController = require('./controllers/ClienteController');
 const SessaoController = require('./controllers/SessaoController');
-const PagarController = require('./controllers/PagarController');
+const Lancamento_finanController = require('./controllers/Lancamento_finanController');
+const Baixa_finanController = require('./controllers/Baixa_finanController');
 
 const routes = express.Router();
 
-routes.get('/pagar', PagarController.index);
-routes.post('/pagar', PagarController.create);
-routes.post('/pagar/:idFinanceiro', PagarController.update);
+routes.get('/baixa', Baixa_finanController.index);
+routes.post('/baixa/:idFinanceiro', Baixa_finanController.update);
+
+routes.get('/lancamento', Lancamento_finanController.index);
+routes.post('/lancamento', Lancamento_finanController.create);
+routes.post('/lancamento/:idFinanceiro', Lancamento_finanController.update);
 
 routes.post('/sessao', SessaoController.create);
 

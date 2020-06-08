@@ -1,7 +1,8 @@
 exports.up = function(knex) {
     return knex.schema.createTable('financeiro', function (table) {
       table.increments('idFinanceiro');
-      table.string('tipo_titulo', 1).notNullable();
+      table.varchar('numero_documento').notNullable();
+      table.string('tipo_titulo').notNullable();
       table.date('data_lancamento').notNullable();
       table.date('data_emissao').notNullable();
       table.date('data_pagamento');
@@ -10,7 +11,7 @@ exports.up = function(knex) {
       table.float('juros');
       table.integer('idPadrao').notNullable();
       table.string('idUsuario').notNullable();
-      table.string('idCliente').notNullable();
+      table.string('idCliente');
 
       table.foreign('idUsuario').references('idUsuario').inTable('usuario');
       table.foreign('idCliente').references('idCliente').inTable('cliente');
