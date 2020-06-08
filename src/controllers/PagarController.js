@@ -12,9 +12,8 @@ module.exports = {
     },
 
     async create(request, response) {
-        const { tipo_titulo, data_lancamento, data_emissao, data_vencimento, valor } = request.body;
+        const { tipo_titulo, data_lancamento, data_emissao, data_vencimento, valor, idCliente } = request.body;
         const idUsuario = request.headers.autorizacao;
-        const idCliente = request.headers.auto;
 
         console.log(request.body);
 
