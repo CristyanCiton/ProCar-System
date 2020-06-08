@@ -28,30 +28,31 @@ module.exports = {
             uf,
             idUsuario
         });
-
         return response.json({ idCliente });
     },
 
-    //async update(request, response) {
-    //    const { nome, cpf_cnpj, email, telefone, cidade, bairro, cep, rua, n, uf } = request.body;
-    //    const idUsuario = request.headers.autorizacao;
+    async update(request, response) {
+        const { idCliente } = request.params;
+        const idUsuario = request.headers.autorizacao;
+        const { nome, cpf_cnpj, email, telefone, cidade, bairro, cep, rua, n, uf } = request.body;
 
-    //    const [idCliente] = await connection('cliente').insert({
-    //        nome,
-    //        cpf_cnpj,
-    //        email,
-    //        telefone,
-    //       cidade,
-    //        bairro,
-    //        cep,
-    //        rua,
-    //        n,
-    //        uf,
-    //        idUsuario
-    //    });
-
-    //   return response.json({ idCliente });
-    //},
+        await connection('cliente')
+        .where('idCliente', idCliente)
+        .update({
+            nome,
+            cpf_cnpj,
+            email,
+            telefone,
+            cidade,
+            bairro,
+            cep,
+            rua,
+            n,
+            uf,
+            idUsuario
+        });
+        return response.status(204).send();
+    },
 
     async delete(request, response) {
         const { idCliente } = request.params;
