@@ -28,7 +28,7 @@ module.exports = {
         if(tipo_consulta == 'TUDO') {
             const financeiro = await connection('financeiro')
             .where('idUsuario', idUsuario)
-            .select('idFinanceiro', 'valor', 'data_vencimento', 'data_pagamento');
+            .select('idFinanceiro', 'valor', 'data_vencimento', 'data_pagamento', 'idPadrao');
 
             return response.json(financeiro);
         }
